@@ -21,9 +21,10 @@ int main() {
         printf("1. Cadastrar \n");
         printf("2. Deletar \n");
         printf("3. Listar \n");
-        printf("4. Sair \n");
+        printf("4. Editar \n");
+        printf("5. Sair \n");
 
-        printf("Escolha uma opcao (1 a 4): ");
+        printf("Escolha uma opcao (1 a 12): ");
         scanf("%d", &opcao); //Usuário digita a opção dele e ela é salva na mamória.
 
         // Dependendo da escolha do usuário, a função roda para realizar o cadastro, listagem ou deletar o lembrete
@@ -34,10 +35,15 @@ int main() {
             deletartarefa(&lt); //Na opção 2, a função deletar tarefa é utilizada
         } else if (opcao==3){
             listartarefa(lt); //Na opção 3, a função listar tarefa é utilizada
-        } else if (opcao==4){ //Para o usuário salvar o arquivo, ele deve apertar a opção 4 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
+        } else if (opcao==4){
+            alteratarefa(&lt);
+            }
+        else if (opcao==5){ //Para o usuário salvar o arquivo, ele deve apertar a opção 5 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
             salvarlista(&lt, "arquivo.txt");
             break;
-        } else{
+        }
+          
+        else{
             printf("Erro! Escolha um numero valido! \n"); //Caso o usuário escolha um número fora do intervalo de 1 a 4, essa mensagem aparece na tela
         }
     }
