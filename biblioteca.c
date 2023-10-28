@@ -1,6 +1,10 @@
 #include "biblioteca.h"
 #include <stdio.h>
 
+void clearbuffer(){
+   int lt; 
+   while((lt = getchar()) != '\n' && lt != EOF); 
+}
 //Função para criar a tarefa onde o usuário pode declarar a prioridade, categoria e descrição do lembrete;
 int criartarefa(listadetarefas *lt){
     if (lt->qtd < 100) { //se a quantidade de tarefas for menor que cem (o máximo) o programa irá pedir a prioridade da tarefa, sua categoria e descrição.
@@ -10,6 +14,8 @@ int criartarefa(listadetarefas *lt){
         scanf(" %[^\n]", lt->tarefas[lt->qtd].categoria); // Usamos " %[^\n]" para ler o "scanf" com espaços, guardando o que o usuário informar como prioridade na memória..
         printf("Descricao: ");
         scanf(" %[^\n]", lt->tarefas[lt->qtd].descricao); // Usamos " %[^\n]" para ler o "scanf" com espaços, guardando o que o usuário informar como prioridade na memória.
+        printf("Estado da tarefa: ");
+        scanf(" %[^\n]", lt->tarefas[lt->qtd].estado);
         lt->qtd++; //A quantidade de tarefas aumenta quando o usuário terminar de descrever sua tarefa.
         printf("Tarefa cadastrada!\n"); //Quando o usuário terminar de descrever a tarefa essa mensagem aparece.
     } else {
@@ -47,8 +53,62 @@ int listartarefa(listadetarefas lt){ //Função para listar as tarefas previamen
             printf("Prioridade: %d\n", lt.tarefas[i].prioridade); //Imprime a prioridade, procurando a  informação a partir da posição da tarefa na lista.
             printf("Categoria: %s\n", lt.tarefas[i].categoria); //Imprime a categoria, procurando a  informação a partir da posição da tarefa na lista.
             printf("Descricao: %s\n", lt.tarefas[i].descricao); //Imprime a descrição, procurando a  informação a partir da posição da tarefa na lista.
+            printf("Estado: %s\n", lt.tarefas[i].estado);
             printf("\n"); //Imprime um espaço para organizar a listagem
         }
+    }
+    return 0;
+}
+
+int alteratarefa(listadetarefas *lt){
+    
+    int lugar;
+    int escolha;
+    printf("Escolha o número da tarefa que quer editar: ");
+    scanf("%d", &lugar);
+    
+
+    if(lugar>=1 && lugar<=lt->qtd){
+        lugar--;
+        printf("Qual campo deseja editar?\n");
+        printf("1- Prioridade: %d\n",lt->tarefas[lugar].prioridade);
+        printf("2- Categoria: %s\n",lt->tarefas[lugar].categoria);
+        printf("3- Descrição: %s\n",lt->tarefas[lugar].descricao);
+        printf("4- Estado: %s\n",lt->tarefas[lugar].estado);
+        scanf("%d",&escolha);
+
+        if(escolha==1){
+            printf("Prioridade (0 a 10) nova: \n");
+            scanf("%d", &lt->tarefas[lugar-1].prioridade);
+            clearbuffer();
+            printf("Prioridade editada com sucesso\n");
+        }
+
+        else if(escolha==2){
+            printf("Categoria nova: \n");
+            scanf("%[^\n]", lt->tarefas[lugar].categoria);
+            clearbuffer();
+            printf("Categoria editada com sucesso\n");
+        }
+
+        else if(escolha==3){
+            printf("Descrição nova: \n");
+            scanf("%[^\n]", lt->tarefas[lugar].descricao);
+            clearbuffer();
+            printf("Descrição editada com sucesso\n");
+        }
+
+        else if(escolha==4){
+            printf("Novo estado: \n");
+            scanf("%[^\n]", lt->tarefas[lugar].estado);
+            clearbuffer();
+            printf("Estado editado com sucesso\n");
+        }
+
+        else{
+            printf("Tarefa não existente, tente novamente./n");
+        }
+
     }
     return 0;
 }

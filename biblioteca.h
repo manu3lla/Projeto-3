@@ -6,6 +6,7 @@ typedef struct {
     int prioridade;
     char categoria[100];
     char descricao[300];
+    char estado[100];
 } tarefa;
 // Criação do struct que une os elementos da tarefa, criando uma lista de tarefas
 typedef struct {
@@ -17,6 +18,15 @@ typedef struct {
 int criartarefa(listadetarefas *lt);
 int deletartarefa(listadetarefas *lt);
 int listartarefa(listadetarefas lt);
+int alteratarefa(listadetarefas *lt);
+int filtra_prioridade (listadetarefas *lt);
+int filtra_estado (listadetarefas *lt);
+int filtra_categoria (listadetarefas *lt);
+int filtra_categoria_prioridade (listadetarefas *lt);
+int exporta_prioridade (listadetarefas *lt);
+int exporta_categoria (listadetarefas *lt);
+int exporta_categoria_prioridade (listadetarefas *lt);
+
 
 int salvarlista(listadetarefas *lt, char nome[]);
 int carregarlista(listadetarefas *lt, char nome[]);
