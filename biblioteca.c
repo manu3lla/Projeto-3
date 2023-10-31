@@ -1,5 +1,6 @@
 #include "biblioteca.h"
 #include <stdio.h>
+#include <string.h>
 
 void clearbuffer(){
    int lt; 
@@ -14,7 +15,7 @@ int criartarefa(listadetarefas *lt){
         scanf(" %[^\n]", lt->tarefas[lt->qtd].categoria); // Usamos " %[^\n]" para ler o "scanf" com espaços, guardando o que o usuário informar como prioridade na memória..
         printf("Descricao: ");
         scanf(" %[^\n]", lt->tarefas[lt->qtd].descricao); // Usamos " %[^\n]" para ler o "scanf" com espaços, guardando o que o usuário informar como prioridade na memória.
-        printf("Estado da tarefa: ");
+        printf("Estado da tarefa (completo, em andamento, não iniciado): ");
         scanf(" %[^\n]", lt->tarefas[lt->qtd].estado);
         lt->qtd++; //A quantidade de tarefas aumenta quando o usuário terminar de descrever sua tarefa.
         printf("Tarefa cadastrada!\n"); //Quando o usuário terminar de descrever a tarefa essa mensagem aparece.
@@ -53,65 +54,93 @@ int listartarefa(listadetarefas lt){ //Função para listar as tarefas previamen
             printf("Prioridade: %d\n", lt.tarefas[i].prioridade); //Imprime a prioridade, procurando a  informação a partir da posição da tarefa na lista.
             printf("Categoria: %s\n", lt.tarefas[i].categoria); //Imprime a categoria, procurando a  informação a partir da posição da tarefa na lista.
             printf("Descricao: %s\n", lt.tarefas[i].descricao); //Imprime a descrição, procurando a  informação a partir da posição da tarefa na lista.
-            printf("Estado: %s\n", lt.tarefas[i].estado);
+            printf("Estado (completo, em andamento, não iniciado): %s\n", lt.tarefas[i].estado);
             printf("\n"); //Imprime um espaço para organizar a listagem
         }
     }
     return 0;
 }
 
-int alteratarefa(listadetarefas *lt){
-    
+int alteratarefa(listadetarefas *lt) {
     int lugar;
     int escolha;
     printf("Escolha o número da tarefa que quer editar: ");
     scanf("%d", &lugar);
-    
-
-    if(lugar>=1 && lugar<=lt->qtd){
+    if (lugar >= 1 && lugar <= lt->qtd) {
         lugar--;
         printf("Qual campo deseja editar?\n");
-        printf("1- Prioridade: %d\n",lt->tarefas[lugar].prioridade);
-        printf("2- Categoria: %s\n",lt->tarefas[lugar].categoria);
-        printf("3- Descrição: %s\n",lt->tarefas[lugar].descricao);
-        printf("4- Estado: %s\n",lt->tarefas[lugar].estado);
-        scanf("%d",&escolha);
-
-        if(escolha==1){
-            printf("Prioridade (0 a 10) nova: \n");
-            scanf("%d", &lt->tarefas[lugar-1].prioridade);
+        printf("1- Prioridade: %d\n", lt->tarefas[lugar].prioridade);
+        printf("2- Categoria: %s\n", lt->tarefas[lugar].categoria);
+        printf("3- Descrição: %s\n", lt->tarefas[lugar].descricao);
+        printf("4- Estado (completo, em andamento, não iniciado): %s\n", lt->tarefas[lugar].estado);
+        scanf("%d", &escolha);
+        if (escolha == 1) {
+            printf("Prioridade (0 a 10) nova: ");
+            scanf("%d", &lt->tarefas[lugar].prioridade);
+            printf("Prioridade editada com sucesso!");
+        } else if (escolha == 2) {
             clearbuffer();
-            printf("Prioridade editada com sucesso\n");
-        }
-
-        else if(escolha==2){
-            printf("Categoria nova: \n");
-            scanf("%[^\n]", lt->tarefas[lugar].categoria);
+            printf("Categoria nova: ");
+            scanf(" %[^\n]", lt->tarefas[lugar].categoria);
+             printf("Categoria editada com sucesso! ");
+        } else if (escolha == 3) {
             clearbuffer();
-            printf("Categoria editada com sucesso\n");
-        }
-
-        else if(escolha==3){
-            printf("Descrição nova: \n");
-            scanf("%[^\n]", lt->tarefas[lugar].descricao);
+            printf("Descrição nova: ");
+            scanf(" %[^\n]", lt->tarefas[lugar].descricao);
+             printf("Descrição editada com sucesso! ");
+        } else if (escolha == 4) {
             clearbuffer();
-            printf("Descrição editada com sucesso\n");
+            printf("Novo estado: ");
+            scanf(" %[^\n]", lt->tarefas[lugar].estado);
+             printf("Estado editado com sucesso! ");
         }
-
-        else if(escolha==4){
-            printf("Novo estado: \n");
-            scanf("%[^\n]", lt->tarefas[lugar].estado);
-            clearbuffer();
-            printf("Estado editado com sucesso\n");
-        }
-
-        else{
-            printf("Tarefa não existente, tente novamente./n");
-        }
-
+    } else {
+        printf("Tarefa não existente, tente novamente.\n");
     }
     return 0;
 }
+
+int filtra_prioridade (listadetarefas *lt){
+    int prioridade_escolhida;
+    printf("Digite a prioridade escolhida: ");
+    scanf("%d", &prioridade_escolhida);
+    for (int i=0; i< lt->qtd; i++){
+        if (lt->tarefas[i].prioridade == prioridade_escolhida){
+            printf("Tarefas com prioridade %d: \n", prioridade_escolhida);
+            printf("\n");
+            printf("Prioridade: %d\n", lt->tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt->tarefas[i].categoria);
+            printf("Descrição: %s\n", lt->tarefas[i].descricao);
+            printf("Estado (completo, em andamento, não iniciado): %s\n", lt->tarefas[i].estado);
+        }
+        else{
+            printf("Não há tarefas com essa prioridade.\n");
+        }
+    }
+
+
+}
+
+int filtra_estado (listadetarefas *lt){
+    char estado_escolhido[100];
+    printf("Digite o estado escolhido (completo, em andamento, não iniciado): ");
+    scanf("%s", estado_escolhido);
+    for (int i=0; i< lt->qtd; i++){
+        if (strcmp(lt->tarefas[i].estado, estado_escolhido)==0){
+            printf("Tarefas com estado %s: \n", estado_escolhido);
+            printf("Prioridade: %d\n", lt->tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt->tarefas[i].categoria);
+            printf("Descrição: %s\n", lt->tarefas[i].descricao);
+            printf("Estado (completo, em andamento, não iniciado): %s\n", lt->tarefas[i].estado);
+        }
+        else{
+            printf("Não há tarefas com o estado escolhido.\n");
+        }
+    }
+
+
+}
+
 
 
 int salvarlista(listadetarefas *lt, char nome[]){ //Função para salvar a lista no arquivo

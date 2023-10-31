@@ -22,7 +22,9 @@ int main() {
         printf("2. Deletar \n");
         printf("3. Listar \n");
         printf("4. Editar \n");
-        printf("5. Sair \n");
+        printf("5. Filtrar tarefas por prioridade \n");
+        printf("6. Filtrar tarefas por estado \n");
+        printf("12. Sair \n");
 
         printf("Escolha uma opcao (1 a 12): ");
         scanf("%d", &opcao); //Usuário digita a opção dele e ela é salva na mamória.
@@ -38,10 +40,17 @@ int main() {
         } else if (opcao==4){
             alteratarefa(&lt);
             }
-        else if (opcao==5){ //Para o usuário salvar o arquivo, ele deve apertar a opção 5 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
+        else if (opcao==5){
+            filtra_prioridade(&lt);
+            }
+        else if (opcao==6){
+            filtra_estado(&lt);
+            }
+        else if (opcao==12){ //Para o usuário salvar o arquivo, ele deve apertar a opção 12 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
             salvarlista(&lt, "arquivo.txt");
             break;
         }
+        
           
         else{
             printf("Erro! Escolha um numero valido! \n"); //Caso o usuário escolha um número fora do intervalo de 1 a 4, essa mensagem aparece na tela
