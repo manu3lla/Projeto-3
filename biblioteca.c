@@ -122,23 +122,47 @@ int filtra_prioridade (listadetarefas *lt){
 }
 
 int filtra_estado (listadetarefas *lt){
-    char estado_escolhido[100];
-    printf("Digite o estado escolhido (completo, em andamento, não iniciado): ");
-    scanf("%s", estado_escolhido);
+    int procura_estado=0;
+    char estado_escolhido[50];
+    printf("Digite o estado escolhido (completo, em andamento, não iniciado): \n");
+    scanf(" %[^\n]", estado_escolhido);
     for (int i=0; i< lt->qtd; i++){
-        if (strcmp(lt->tarefas[i].estado, estado_escolhido)==0){
+        if (strcmp(estado_escolhido,lt->tarefas[i].estado)==0){
             printf("Tarefas com estado %s: \n", estado_escolhido);
+            printf("\n");
             printf("Prioridade: %d\n", lt->tarefas[i].prioridade);
             printf("Categoria: %s\n", lt->tarefas[i].categoria);
             printf("Descrição: %s\n", lt->tarefas[i].descricao);
             printf("Estado (completo, em andamento, não iniciado): %s\n", lt->tarefas[i].estado);
+            procura_estado=1;
+            }
+        
         }
-        else{
+        if(procura_estado==0){
             printf("Não há tarefas com o estado escolhido.\n");
-        }
     }
+}
 
-
+int filtra_categoria (listadetarefas *lt){
+    int procura_categoria=0;
+    char categoria_escolhida[200];
+    printf("Digite a categoria escolhida: \n");
+    scanf(" %[^\n]", categoria_escolhida);
+    for (int i=0; i< lt->qtd; i++){
+        if (strcmp(categoria_escolhida,lt->tarefas[i].categoria)==0){
+            printf("Tarefas com categoria %s: \n", categoria_escolhida);
+            printf("\n");
+            printf("Prioridade: %d\n", lt->tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt->tarefas[i].categoria);
+            printf("Descrição: %s\n", lt->tarefas[i].descricao);
+            printf("Estado (completo, em andamento, não iniciado): %s\n", lt->tarefas[i].estado);
+            procura_categoria=1;
+            }
+        
+        }
+        if(procura_categoria==0){
+            printf("Não há tarefas com a categoria escolhido.\n");
+    }
 }
 
 
