@@ -24,6 +24,7 @@ int main() {
         printf("4. Editar \n");
         printf("5. Filtrar tarefas por prioridade \n");
         printf("6. Filtrar tarefas por estado \n");
+        printf("7. Filtrar tarefas por categoria \n");
         printf("12. Sair \n");
 
         printf("Escolha uma opcao (1 a 12): ");
@@ -45,6 +46,9 @@ int main() {
             }
         else if (opcao==6){
             filtra_estado(&lt);
+            }
+        else if (opcao==7){
+            filtra_categoria(&lt);
             }
         else if (opcao==12){ //Para o usuário salvar o arquivo, ele deve apertar a opção 12 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
             salvarlista(&lt, "arquivo.txt");
