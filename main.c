@@ -18,13 +18,16 @@ int main() {
     // Declaramos um while para o usuário decidir qual função ele quer no momento.
     while (1){
         printf("Opcoes de escolha:\n");
-        printf("1. Cadastrar \n");
-        printf("2. Deletar \n");
-        printf("3. Listar \n");
-        printf("4. Editar \n");
-        printf("5. Filtrar tarefas por prioridade \n");
-        printf("6. Filtrar tarefas por estado \n");
-        printf("7. Filtrar tarefas por categoria \n");
+        printf("1. Cadastrar.\n");
+        printf("2. Deletar.\n");
+        printf("3. Listar.\n");
+        printf("4. Editar.\n");
+        printf("5. Filtrar tarefas por prioridade.\n");
+        printf("6. Filtrar tarefas por estado.\n");
+        printf("7. Filtrar tarefas por categoria.\n");
+        printf("8. Filtrar tarefas por prioridade e categoria.\n");
+        printf("9. Exportar tarefas por prioridade.\n");
+        printf("10. Exportar tarefas por categoria.\n");
         printf("12. Sair \n");
 
         printf("Escolha uma opcao (1 a 12): ");
@@ -49,6 +52,15 @@ int main() {
             }
         else if (opcao==7){
             filtra_categoria(&lt);
+            }
+        else if (opcao==8){
+            filtra_categoria_prioridade(&lt);
+            }
+        else if (opcao==9){
+            exporta_prioridade(lt, "arquivo_prioridade");
+            }
+        else if (opcao==10){
+            exporta_categoria(&lt, "arquivo_categoria");
             }
         else if (opcao==12){ //Para o usuário salvar o arquivo, ele deve apertar a opção 12 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
             salvarlista(&lt, "arquivo.txt");
