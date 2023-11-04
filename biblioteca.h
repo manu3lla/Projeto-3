@@ -23,8 +23,8 @@ int filtra_prioridade (listadetarefas *lt);
 int filtra_estado (listadetarefas *lt);
 int filtra_categoria (listadetarefas *lt);
 int filtra_categoria_prioridade (listadetarefas *lt);
-int exporta_prioridade (listadetarefas *lt);
-int exporta_categoria (listadetarefas *lt);
+int exporta_prioridade (listadetarefas lt, char arquivo[100]);
+int exporta_categoria (listadetarefas *lt, char arquivo[100]);
 int exporta_categoria_prioridade (listadetarefas *lt);
 
 
