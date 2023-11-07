@@ -28,6 +28,7 @@ int main() {
         printf("8. Filtrar tarefas por prioridade e categoria.\n");
         printf("9. Exportar tarefas por prioridade.\n");
         printf("10. Exportar tarefas por categoria.\n");
+        printf("11. Exportar tarefas por prioridade e categoria.\n");
         printf("12. Sair \n");
 
         printf("Escolha uma opcao (1 a 12): ");
@@ -62,10 +63,14 @@ int main() {
         else if (opcao==10){
             exporta_categoria(&lt, "arquivo_categoria");
             }
+        else if (opcao==11){ 
+            exporta_categoria_prioridade(&lt, "arquivo_categoria_prioridade");
+        }
         else if (opcao==12){ //Para o usuário salvar o arquivo, ele deve apertar a opção 12 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
             salvarlista(&lt, "arquivo.txt");
             break;
         }
+        
         
           
         else{
