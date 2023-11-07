@@ -214,13 +214,13 @@ int exporta_categoria (listadetarefas *lt, char arquivo[100]){
     char categoria_escolhida[200];
     printf("Digite a categoria escolhida: \n");
     scanf(" %[^\n]", categoria_escolhida);
-    FILE *f = fopen("arquivo_categoria", "w"); //Abre um arquivo no formato binário
+    FILE *f = fopen(arquivo, "w"); //Abre um arquivo no formato binário
     if (f == NULL) {
         printf("Erro ao abrir o arquivo.\n"); //Caso o arquivo não exista, esta mensagem aparece no terminal alertando o usuário
         return 1;
     }
     for (int i=0; i< lt->qtd; i++){
-        if (lt->tarefas[i].categoria == categoria_escolhida){
+        if (strcmp(lt->tarefas[i].categoria, categoria_escolhida) == 0){
             fprintf(f, "Prioridade: %d / Categoria: %s / Estado: %s / Descricao: %s\n", lt->tarefas[i].prioridade, lt->tarefas[i].categoria, lt->tarefas[i].estado, lt->tarefas[i].descricao);
         }
         }
@@ -229,6 +229,29 @@ int exporta_categoria (listadetarefas *lt, char arquivo[100]){
     return 0;
         
 }
+
+int exporta_categoria_prioridade (listadetarefas *lt, char arquivo[100]){
+    int prioridade_escolhida;
+    char categoria_escolhida[200];
+    printf("Digite a prioridade escolhida: \n");
+    scanf("%d", &prioridade_escolhida);
+    printf("Digite a categoria escolhida: \n");
+    scanf(" %[^\n]", categoria_escolhida);
+    FILE *f = fopen(arquivo, "w"); //Abre um arquivo no formato binário
+    if (f == NULL) {
+        printf("Erro ao abrir o arquivo.\n"); //Caso o arquivo não exista, esta mensagem aparece no terminal alertando o usuário
+        return 1;
+    }
+    for (int i=0; i< lt->qtd; i++){
+        if (strcmp(categoria_escolhida,lt->tarefas[i].categoria)==0 && lt->tarefas[i].prioridade == prioridade_escolhida){
+            fprintf(f, "Prioridade: %d / Categoria: %s / Estado: %s / Descricao: %s\n", lt->tarefas[i].prioridade, lt->tarefas[i].categoria, lt->tarefas[i].estado, lt->tarefas[i].descricao);
+        }
+        }
+    fclose(f); //Fecha o arquivo
+    printf("Tarefas exportadas por categoria e prioridade.\n");
+    return 0;
+}
+
 
 
 int salvarlista(listadetarefas *lt, char nome[]){ //Função para salvar a lista no arquivo
