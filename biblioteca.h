@@ -19,7 +19,7 @@ int criartarefa(listadetarefas *lt);
 int deletartarefa(listadetarefas *lt);
 int listartarefa(listadetarefas lt);
 int alteratarefa(listadetarefas *lt);
-int filtra_prioridade (listadetarefas *lt);
+int filtra_prioridade (listadetarefas lt);
 int filtra_estado (listadetarefas *lt);
 int filtra_categoria (listadetarefas *lt);
 int filtra_categoria_prioridade (listadetarefas *lt);

@@ -46,7 +46,7 @@ int main() {
             alteratarefa(&lt);
             }
         else if (opcao==5){
-            filtra_prioridade(&lt);
+            filtra_prioridade(lt);
             }
         else if (opcao==6){
             filtra_estado(&lt);

@@ -1,3 +1,4 @@
-Prioridade: 8 / Categoria: casa / Estado: completo / Descricao: limpar a louca
-Prioridade: 10 / Categoria: casa / Estado: em andamento / Descricao: limpar
-Prioridade: 1 / Categoria: casa / Estado: não iniciado / Descricao: cachorro
+Prioridade: 10 / Categoria: limpeza / Estado: a fazer / Descricao: limpar a casa
+Prioridade: 10 / Categoria: limpeza / Estado: em andamento / Descricao: limpar
+Prioridade: 10 / Categoria: limpeza / Estado: completo / Descricao: limpar a cozinha
+Prioridade: 8 / Categoria: limpeza / Estado: em andamento / Descricao: limpar a casa
