@@ -98,25 +98,25 @@ int alteratarefa(listadetarefas *lt) {
     return 0;
 }
 
-int filtra_prioridade (listadetarefas lt){
+int filtra_prioridade(listadetarefas lt) {
     int prioridade_escolhida;
     printf("Digite a prioridade escolhida: ");
     scanf("%d", &prioridade_escolhida);
-    for (int i=0; i< lt.qtd; i++){
-        if (lt.tarefas[i].prioridade == prioridade_escolhida){
+    int verifica = 0;
+    for (int i = 0; i < lt.qtd; i++) {
+        if (lt.tarefas[i].prioridade == prioridade_escolhida) {
             printf("Tarefas com prioridade %d: \n", prioridade_escolhida);
+            verifica = 1;
             printf("\n");
             printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
             printf("Categoria: %s\n", lt.tarefas[i].categoria);
             printf("Descrição: %s\n", lt.tarefas[i].descricao);
             printf("Estado: %s\n", lt.tarefas[i].estado);
         }
-        else{
-            printf("Não há tarefas com essa prioridade.\n");
-        }
     }
-
-
+    if (verifica==0) {
+        printf("Não há tarefas com essa prioridade.\n");
+    }
 }
 
 int filtra_estado (listadetarefas *lt){
@@ -134,7 +134,6 @@ int filtra_estado (listadetarefas *lt){
             printf("Descrição: %s\n", lt->tarefas[procuraestado].descricao);
             printf("Estado: %s\n", lt->tarefas[procuraestado].estado);
             }
-        
         }
         if(procura_estado==0){
             printf("Não há tarefas com o estado escolhido.\n");
