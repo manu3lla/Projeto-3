@@ -43,36 +43,34 @@ int main() {
         } else if (opcao==3){
             listartarefa(lt); //Na opção 3, a função listar tarefa é utilizada
         } else if (opcao==4){
-            alteratarefa(&lt);
+            alteratarefa(&lt); //Na opção 4, a função editar tarefa é utilizada
             }
         else if (opcao==5){
-            filtra_prioridade(lt);
+            filtra_prioridade(lt); //Na opção 5, a função filtrar tarefa por prioridade é utilizada
             }
         else if (opcao==6){
-            filtra_estado(&lt);
+            filtra_estado(&lt); //Na opção 6, a função filtrar tarefa por estado é utilizada
             }
         else if (opcao==7){
-            filtra_categoria(&lt);
+            filtra_categoria(&lt); //Na opção 7, a função filtrar tarefa por categoria é utilizada
             }
         else if (opcao==8){
-            filtra_categoria_prioridade(&lt);
+            filtra_categoria_prioridade(&lt); //Na opção 8, a função filtrar tarefa por categoria e prioridade é utilizada
             }
         else if (opcao==9){
-            exporta_prioridade(lt, "arquivo_prioridade");
+            exporta_prioridade(lt, "arquivo_prioridade"); //Na opção 9, a função exportar tarefa por prioridade é utilizada
             }
         else if (opcao==10){
-            exporta_categoria(&lt, "arquivo_categoria");
+            exporta_categoria(&lt, "arquivo_categoria"); //Na opção 10, a função exportar tarefa por categoria é utilizada
             }
         else if (opcao==11){ 
-            exporta_categoria_prioridade(&lt, "arquivo_categoria_prioridade");
+            exporta_categoria_prioridade(&lt, "arquivo_categoria_prioridade"); //Na opção 11, a função exportar tarefa por categoria e prioridade é utilizada
         }
         else if (opcao==12){ //Para o usuário salvar o arquivo, ele deve apertar a opção 12 ("Sair"), sendo que quando acessar o programa novamente, todas as informações fornecidas antes de sair serão listadas
             salvarlista(&lt, "arquivo.txt");
             break;
         }
         
-        
-          
         else{
             printf("Erro! Escolha um numero valido! \n"); //Caso o usuário escolha um número fora do intervalo de 1 a 4, essa mensagem aparece na tela
         }
