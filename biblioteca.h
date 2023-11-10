@@ -1,7 +1,7 @@
 #ifndef PROJETO_1_BIBLIOTECA_H
 #define PROJETO_1_BIBLIOTECA_H
 #endif //PROJETO_1_BIBLIOTECA_H
-//Criação do struct dos elementos da tarefa, incluindo prioridade, categoria e descrição (com a quantidade máxima de caracteres em cada um)
+//Criação do struct dos elementos da tarefa, incluindo prioridade, categoria, descrição e estado (com a quantidade máxima de caracteres e números em cada um)
 typedef struct {
     int prioridade;
     char categoria[100];
